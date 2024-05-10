@@ -1,5 +1,5 @@
 // import Image from "next/image";
-
+'use client'
 import AccountDetails from "@/components/AccountDetails";
 import CurrentBalance from "@/components/CurrentBalance";
 import Header from "@/components/Header";
