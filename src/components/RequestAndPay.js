@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { DollarOutlined, SwapOutlined } from "@ant-design/icons";
 import { Modal, Input, InputNumber } from "antd";
@@ -60,7 +61,7 @@ const RequestAndPay = () => {
 
       <div className="flex justify-center gap-10 p-4 text-black">
         <div
-          className="flex flex-col items-center justify-center p- border border-gray-800 bg-gray-300  rounded cursor-pointer w-24"
+          className="flex flex-col items-center justify-center p- border border-gray-800 bg-gray-300  rounded cursor-pointer w-24 transition-all duration-900 hover:bg-gray-400"
           onClick={togglePayModal}
         >
           <DollarOutlined style={{ fontSize: "26px" }} />
@@ -74,14 +75,13 @@ const RequestAndPay = () => {
           <SwapOutlined style={{ fontSize: "26px" }} />
           <span>Request</span>
         </div> */}
-        <div
-  className="flex flex-col items-center justify-center p-4 border border-gray-800 bg-gray-300 rounded cursor-pointer w-24"
-  onClick={toggleRequestModal}
-  style={{ transition: "background-color 0.6s ease", ":hover": { backgroundColor: "green" } }}
->
-  <SwapOutlined style={{ fontSize: "26px" }} />
-  <span>Request</span>
-</div>
+       <div
+    className="flex flex-col items-center justify-center p-4 border border-gray-800 bg-gray-300 rounded cursor-pointer w-24 transition-all duration-900 hover:bg-gray-400"
+    onClick={toggleRequestModal}
+  >
+    <SwapOutlined style={{ fontSize: "26px" }} />
+    <span>Request</span>
+  </div>
 
       </div>
     </>
