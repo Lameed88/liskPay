@@ -13,7 +13,7 @@ export default function Home() {
   <div > 
     <Header/>
   </div>
-<div className="flex flex-col-reverse md:flex-row gap-10 mt-5 justify-center">
+{/* <div className="flex flex-col-reverse md:flex-row gap-10 mt-5 justify-center">
   <div className="md:w-1/2">
     <RecentActivity />
   </div>
@@ -28,31 +28,9 @@ export default function Home() {
       <AccountDetails />
     </div>
   </div>
-</div>
-
-
-{/* <div className="flex gap-10 mt-5 px-10" >
-  <div className="flex flex-col" >
-   
-          <div>
-            <CurrentBalance />
-          </div>
-          <div>
-            <RequestAndPay />
-          </div>
-          <div>
-            <AccountDetails />
-          </div>
-          </div>
-     
-      <div>
-        <RecentActivity />
-      </div>
- 
 </div> */}
-{/* <CurrentBalance /> */}
-{/* <AccountDetails /> */}
-{/* <RecentActivity /> */}
+
+
     </>
   );
 }
