@@ -66,6 +66,110 @@
 //   );
 // };
 
+// import { useState, useEffect } from "react";
+// import { Button, Modal } from "antd";
+// import Link from "next/link";
+
+// import RecentActivity from "./RecentActivity";
+// import CurrentBalance from "./CurrentBalance";
+// import RequestAndPay from "./RequestAndPay";
+// import AccountDetails from "./AccountDetails";
+
+// const Header = () => {
+//   const [isWalletConnected, setIsWalletConnected] = useState(false);
+//   const [modalVisible, setModalVisible] = useState(false); // Set initial state to false
+
+//   useEffect(() => {
+//     // Show the modal if wallet is not connected initially
+//     if (!isWalletConnected) {
+//       setModalVisible(true);
+//     }
+//   }, [isWalletConnected]);
+
+//   const handleWalletToggle = () => {
+//     setIsWalletConnected((prevState) => !prevState); // Toggle wallet connection state
+//   };
+
+//   const handleModalOk = () => {
+//     setModalVisible(false); // Close the modal
+//     setIsWalletConnected(false); // Disconnect the wallet
+//   };
+
+//   return (
+//     <div className="header">
+//       <div className="px-20 py-5 shadow-lg">
+//         <div className="flex flex-row justify-between">
+//           <div className="flex flex-row">
+//             <div className="logo mr-4 cursor-pointer">
+//               <Link href="/">
+//                 <img
+//                   className="max-w-full mx-auto md:max-w-none h-auto"
+//                   src={"/liskpay.png"}
+//                   width="150"
+//                   height="150"
+//                   alt={"lisklogo"}
+//                 />
+//               </Link>
+//             </div>
+//             {["Summary", "Activity", "Send & Request", "Wallet", "Help"].map(
+//               (item) => (
+//                 <div
+//                   key={item}
+//                   className={`menuOption mr-4 cursor-pointer transition-colors flex gap-24 duration-300 hover:text-cyan-400 hover:underline`}
+//                   style={{ display: isWalletConnected ? "block" : "none" }}
+//                 >
+//                   {item}
+//                 </div>
+//               )
+//             )}
+
+           
+//           </div>
+//           <div className="flex justify-end">
+//             <Button type={"primary"} onClick={handleWalletToggle}>
+//               {isWalletConnected ? "Disconnect Wallet" : "Connect Wallet"}
+//             </Button>
+//           </div>
+//         </div>
+//       </div>
+
+//       <Modal
+//         title="Please connect your wallet"
+//         visible={modalVisible}
+//         onOk={handleModalOk}
+//         onCancel={() => setModalVisible(false)}
+//       >
+//         Please connect your wallet to continue.
+//       </Modal>
+
+//       {/* Render content only if wallet is connected */}
+//       {isWalletConnected && (
+//         <div>
+//           <div className="flex flex-col-reverse md:flex-row gap-10 mt-5 justify-center">
+//             <div className="md:w-1/2">
+//               <RecentActivity />
+//             </div>
+//             <div className="flex flex-col md:w-1/3">
+//               <div>
+//                 <CurrentBalance />
+//               </div>
+//               <div>
+//                 <RequestAndPay />
+//               </div>
+//               <div>
+//                 <AccountDetails />
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Header;
+
+
 import { useState, useEffect } from "react";
 import { Button, Modal } from "antd";
 import Link from "next/link";
@@ -77,67 +181,55 @@ import AccountDetails from "./AccountDetails";
 
 const Header = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false); // Set initial state to false
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
-    // Show the modal if wallet is not connected initially
     if (!isWalletConnected) {
       setModalVisible(true);
     }
   }, [isWalletConnected]);
 
   const handleWalletToggle = () => {
-    setIsWalletConnected((prevState) => !prevState); // Toggle wallet connection state
+    setIsWalletConnected((prevState) => !prevState);
   };
 
   const handleModalOk = () => {
-    setModalVisible(false); // Close the modal
-    setIsWalletConnected(false); // Disconnect the wallet
+    setModalVisible(false);
+    setIsWalletConnected(false);
   };
 
   return (
     <div className="header">
-      <div className="px-20 py-5 shadow-lg">
-        <div className="flex flex-row justify-between">
-          <div className="flex flex-row">
-            <div className="logo mr-4 cursor-pointer">
-              <Link href="/">
-                <img
-                  className="max-w-full mx-auto md:max-w-none h-auto"
-                  src={"/liskpay.png"}
-                  width="150"
-                  height="150"
-                  alt={"lisklogo"}
-                />
-              </Link>
-            </div>
+      <div className="px-4 md:px-20 py-5 shadow-lg">
+        <div className="flex flex-row justify-between items-center">
+          <div className="logo cursor-pointer">
+            <Link href="/">
+              <img
+                className="max-w-full mx-auto md:max-w-none h-auto"
+                src={"/liskpay.png"}
+                width="150"
+                height="150"
+                alt={"lisklogo"}
+              />
+            </Link>
+          </div>
+          <div className="flex items-center gap-5 text-lg font-medium ">
             {["Summary", "Activity", "Send & Request", "Wallet", "Help"].map(
-              (item) => (
+              (item, index) => (
                 <div
-                  key={item}
-                  className={`menuOption mr-4 cursor-pointer transition-colors  duration-300 hover:text-cyan-400 hover:underline`}
-                  style={{ display: isWalletConnected ? "block" : "none" }}
+                  key={index}
+                  className={`menuOption mr-4 cursor-pointer transition-colors hover:text-cyan-400 hover:underline ${
+                    isWalletConnected ? "block" : "hidden"
+                  }`}
                 >
                   {item}
                 </div>
               )
             )}
-
-            {/* {["Summary", "Activity", "Send & Request", "Wallet", "Help"].map(
-              
-              (item) => (
-                <div
-                  key={item}
-                  className={`menuOption mr-4`}
-                  style={{ display: isWalletConnected ? 'block' : 'none' }}
-                >
-                  {item}
-                </div>
-              )
-            )} */}
+          
           </div>
-          <div className="flex justify-end">
-            <Button type={"primary"} onClick={handleWalletToggle}>
+          <div>
+          <Button type={"primary"} onClick={handleWalletToggle}>
               {isWalletConnected ? "Disconnect Wallet" : "Connect Wallet"}
             </Button>
           </div>
@@ -153,10 +245,9 @@ const Header = () => {
         Please connect your wallet to continue.
       </Modal>
 
-      {/* Render content only if wallet is connected */}
       {isWalletConnected && (
         <div>
-          <div className="flex flex-col-reverse md:flex-row gap-10 mt-5 justify-center">
+          <div className="flex flex-col md:flex-row gap-10 mt-5 justify-center px-4 md:px-20">
             <div className="md:w-1/2">
               <RecentActivity />
             </div>
@@ -179,3 +270,5 @@ const Header = () => {
 };
 
 export default Header;
+
+
